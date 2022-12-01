@@ -3,7 +3,7 @@ import Artworks from "../components/Artworks";
 export default function Home() {
   return (
     <>
-      <p>🐙</p>
+      <h1>🐙</h1>
       <Artworks />
     </>
   );

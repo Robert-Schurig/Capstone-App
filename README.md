@@ -106,3 +106,11 @@ You can auto format all files in the project by calling
 
 Please make sure that your code passes the prettier check before pushing to
 Github. Your pull requests will report failed code quality checks otherwise.
+
+## Eigene Notizen
+
+Artworks.js: Ternary sorgt dafür, dass es die API-Daten geladen werden können.
+Wenn die Seite geladen wird, ist das Fetchen der Daten noch nicht abgeschlossen.
+Deswegen stehen anfangs keine Daten zur Verfügung, die angezeigt werden können.
+Der Ternary bietet einen Ausweg für diesen Fall. Wenn die Daten da sind (2. Fall
+Ternary), werden sie angezeigt.

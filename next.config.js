@@ -7,6 +7,12 @@ const nextConfig = {
   eslint: {
     dirs: ["pages", "components", "styles"],
   },
+  reactStrictMode: true,
+  swcMinify: true,
+  compiler: {reactRemoveProperties: true, styledComponents: true},
+  images: {
+    domains: ["api.europeana.eu"],
+  },
 };
 
 module.exports = nextConfig;

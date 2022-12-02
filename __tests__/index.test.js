@@ -1,15 +1,13 @@
 import {render, screen} from "@testing-library/react";
-import Home from "../pages/index";
+import Profile from "../pages/profile/index";
 import "@testing-library/jest-dom";
 
 describe("Home", () => {
   it("renders an octopus", () => {
-    render(<Home />);
+    render(<Profile />);
 
-    const heading = screen.getByRole("heading", {
-      name: /🐙/i,
-    });
+    const list = screen.getByText(/Benutzername/i);
 
-    expect(heading).toBeInTheDocument();
+    expect(list).toBeInTheDocument();
   });
 });

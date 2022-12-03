@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import Image from "next/image";
 
-export default function Artworks() {
+export default function ImageCard() {
   const [dataArray, setDataArray] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [displayImage, setDisplayImage] = useState(false);

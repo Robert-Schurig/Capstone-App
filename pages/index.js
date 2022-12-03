@@ -1,9 +1,9 @@
-import Artworks from "../components/Artworks";
+import ImageCard from "../components/imageCard";
 
 export default function Home() {
   return (
     <>
-      <Artworks />
+      <ImageCard />
     </>
   );
 }

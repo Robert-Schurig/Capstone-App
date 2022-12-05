@@ -18,6 +18,7 @@ export default function ImageCard() {
         setDisplayImage(randomizeImage(serverData.items));
       });
   }, []);
+  console.log(dataArray);
 
   function randomizeImage(dataArray) {
     const randomIndex = Math.round(Math.random() * dataArray.length);

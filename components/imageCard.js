@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import Image from "next/image";
+import styled from "styled-components";
 
 export default function ImageCard() {
   const [dataArray, setDataArray] = useState([]);
@@ -31,20 +32,30 @@ export default function ImageCard() {
   return (
     <>
       {displayImage ? (
-        <div>
-          <Image
-            key={displayImage.index}
-            alt={displayImage.title[0]}
-            src={displayImage.edmPreview[0]}
-            width={800}
-            height={500}
-          />
-          <p>{displayImage.title[0]}</p>
-          <p>{displayImage.dcCreator}</p>
-        </div>
+        <>
+          <ImageContainer>
+            <Image
+              key={displayImage.index}
+              alt={displayImage.title[0]}
+              src={displayImage.edmPreview[0]}
+              fill="true"
+              objectFit="contain"
+            />
+          </ImageContainer>
+          <div>
+            <p>{displayImage.title[0]}</p>
+            <p>{displayImage.dcCreator}</p>
+          </div>
+        </>
       ) : (
         ""
       )}
     </>
   );
 }
+
+const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 400px;
+`;

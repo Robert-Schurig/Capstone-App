@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import {useState, useEffect} from "react";
 import Image from "next/legacy/image";
 
@@ -14,7 +13,6 @@ export default function Favorites(favorite) {
       )
         .then(response => response.json())
         .then(favImages => setFavImages(favImages));
-      console.log(response);
     }
   }, [favorite]);
 

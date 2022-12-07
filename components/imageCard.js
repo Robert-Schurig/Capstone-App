@@ -41,7 +41,7 @@ export default function ImageCard() {
   if (isLoading) return <p>Loading...</p>;
   if (!dataArray) return <p>No data</p>;
   return (
-    <main>
+    <>
       {displayImage ? (
         <>
           <ImageContainer>
@@ -83,13 +83,9 @@ export default function ImageCard() {
           />
         </Button>
       </ButtonContainer>
-    </main>
+    </>
   );
 }
-
-const Main = styled.main`
-  display: flex;
-`;
 
 const ImageContainer = styled.div`
   position: relative;

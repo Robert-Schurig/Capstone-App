@@ -1,37 +1,37 @@
-import {useState, useEffect} from "react";
-import Image from "next/legacy/image";
+// import {useContext} from "react";
+// import Image from "next/legacy/image";
+// import {ImageContext} from "../context/DataContext";
 
-export default function Favorites(favorite) {
-  const [favImages, setFavImages] = useState([]);
+// export default function Favorites(favorite) {
+//   const {} = useContext(ImageContext);
+//   useEffect(() => {
+//     if (favorite.length === 0) {
+//       setFavImages([]);
+//     } else {
+//       fetch(
+//         "https://api.europeana.eu/record/v2/search.json?media=true&profile=minimal&query=Painting&theme=art&reusability=open&qf=IMAGE_COLOUR:%22TRUE%22&rows=100&wskey=hanozzle"
+//       )
+//         .then(response => response.json())
+//         .then(favImages => setFavImages(favImages));
+//     }
+//   }, [favorite]);
 
-  useEffect(() => {
-    if (favorite.length === 0) {
-      setFavImages([]);
-    } else {
-      fetch(
-        "https://api.europeana.eu/record/v2/search.json?media=true&profile=minimal&query=Painting&theme=art&reusability=open&qf=IMAGE_COLOUR:%22TRUE%22&rows=100&wskey=hanozzle"
-      )
-        .then(response => response.json())
-        .then(favImages => setFavImages(favImages));
-    }
-  }, [favorite]);
-
-  return (
-    <div>
-      {favImages.map(favImage => {
-        return (
-          <article key={favImage.index}>
-            <p>{favImage.title}</p>
-            <Image
-              key={favImage.index}
-              src={favImage.edmPreview[0]}
-              alt={favImage.title[0]}
-              fill="true"
-              objectFit="contain"
-            />
-          </article>
-        );
-      })}
-    </div>
-  );
-}
+//   return (
+//     <div>
+//       {favorite.map(fav, index => {
+//         return (
+//           <article key={fav.id}>
+//             <p>{fav.title}</p>
+//             <Image
+//               key={index}
+//               src={fav.edmPreview[0]}
+//               alt={fav.title[0]}
+//               height={300}
+//               width={500}
+//             />
+//           </article>
+//         );
+//       })}
+//     </div>
+//   );
+// }

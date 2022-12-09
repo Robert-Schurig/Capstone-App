@@ -1,23 +1,14 @@
 import {useState, useEffect} from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import styled from "styled-components";
 import deleteIcon from "../public/deleteIcon.svg";
 import likeIcon from "../public/likeIcon.svg";
 
-export default function ImageCard() {
+export default function ImageCard({addFavorite}) {
+  // const {setFavorite} = useContext(ImageContext);
   const [dataArray, setDataArray] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [displayImage, setDisplayImage] = useState(false);
-  const [favorite, setFavorite] = useState([]);
-
-  function addFavorite(index) {
-    if (favorite.includes(index)) {
-      const newFavorite = favorite.filter(favIndex => favIndex !== index);
-      setFavorite(newFavorite);
-    } else {
-      setFavorite([...favorite, index]);
-    }
-  }
 
   useEffect(() => {
     setLoading(true);
@@ -41,7 +32,7 @@ export default function ImageCard() {
   if (isLoading) return <p>Loading...</p>;
   if (!dataArray) return <p>No data</p>;
   return (
-    <>
+    <div>
       {displayImage ? (
         <>
           <ImageContainer>
@@ -49,8 +40,8 @@ export default function ImageCard() {
               key={displayImage.index}
               alt={displayImage.title[0]}
               src={displayImage.edmPreview[0]}
-              fill="true"
-              objectFit="contain"
+              width={500}
+              height={300}
             />
           </ImageContainer>
           <div>
@@ -64,31 +55,19 @@ export default function ImageCard() {
 
       <ButtonContainer>
         <Button>
-          <Image
-            src={deleteIcon}
-            alt="Delete Icon"
-            height={80}
-            width={80}
-            objectFit="contain"
-          />
+          <Image src={deleteIcon} alt="Delete Icon" height={100} width={100} />
         </Button>
 
-        <Button onClick={() => addFavorite(favorite)}>
-          <Image
-            src={likeIcon}
-            alt="Like Icon"
-            height={80}
-            width={80}
-            objectFit="contain"
-          />
+        <Button onClick={() => addFavorite(displayImage)}>
+          <Image src={likeIcon} alt="Like Icon" height={80} width={80} />
         </Button>
       </ButtonContainer>
-    </>
+    </div>
   );
 }
 
 const ImageContainer = styled.div`
-  position: relative;
+  display: flex;
   width: 100%;
   height: 400px;
 `;

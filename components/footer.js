@@ -25,7 +25,7 @@ export default function Footer() {
       </NavElement>
 
       <NavElement active={pathname.includes("/favoritespage")}>
-        <Link href="/favoritespage">
+        <Link href="/favorites">
           <Image
             className="image"
             src={likeIcon}

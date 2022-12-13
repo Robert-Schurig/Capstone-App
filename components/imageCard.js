@@ -11,21 +11,33 @@ import {ImageContext} from "./ImageContext";
 export default function ImageCard() {
   // const {setFavorite} = useContext(ImageContext);
   const [dataArray, setDataArray] = useState([]);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [displayImage, setDisplayImage] = useState(null);
   const {addFavorite} = useContext(ImageContext);
 
   useEffect(() => {
     setLoading(true);
-    fetch(
-      "https://api.europeana.eu/record/v2/search.json?media=true&profile=minimal&query=Painting&theme=art&reusability=open&qf=IMAGE_COLOUR:%22TRUE%22&rows=100&wskey=hanozzle"
-    )
-      .then(res => res.json())
-      .then(serverData => {
-        setDataArray(serverData.items);
-        setLoading(false);
-        setDisplayImage(randomizeImage(serverData.items));
-      });
+    const getImages = async () => {
+      try {
+        const response = await fetch(
+          "https://api.europeana.eu/record/v2/search.json?media=true&profile=minimal&query=Painting&theme=art&reusability=open&qf=IMAGE_COLOUR:%22TRUE%22&rows=100&wskey=hanozzle"
+        );
+        if (response.ok) {
+          const serverData = await response.json();
+          setDataArray(serverData.items);
+          setLoading(false);
+          setDisplayImage(randomizeImage(serverData.items));
+        } else {
+          throw new Error(
+            "Fetch fehlgeschlagen mit Status: ${response.status}"
+          );
+        }
+      } catch (error) {
+        console.log(error);
+        alert(error.message);
+      }
+    };
+    getImages();
   }, []);
 
   function randomizeImage(dataArray) {
@@ -111,27 +123,9 @@ const DeleteButton = styled.button`
   .activeicon {
     display: none;
   }
-  /*
-  :hover .inactiveicon {
-    visibility: hidden;
-  }
-  .activeicon {
-    visibility: visible;
-  } */
 `;
 
 const LikeButton = styled.button`
   border: none;
   background: none;
 `;
-
-/* .icon:nth-child(1) {
-    :hover {
-      display: none;
-    }
-  }
-  .icon:nth-child(2) {
-    :hover {
-      display: block;
-    }
-  } */

@@ -8,7 +8,7 @@ const ImageContextProvider = props => {
   // add function with a proper check if the favorite to be stored is already in your state variable
   const addFavorite = favorite => {
     const savedFavorite = favorites.find(fav => fav.id === favorite.id);
-    console.log(savedFavorite);
+
     if (savedFavorite) {
       return;
     }
@@ -17,15 +17,6 @@ const ImageContextProvider = props => {
     setFavorites([...favorites, favorite]);
     // }
   };
-
-  // this useEffect is just for testing purposes as it logs your favorites state variable...
-  useEffect(() => {
-    if (favorites.length > 0) {
-      console.log("favorites in ImageContext: ", favorites);
-    } else {
-      console.log("favorites not set");
-    }
-  }, [favorites]);
 
   return (
     <ImageContext.Provider value={{favorites, addFavorite}}>

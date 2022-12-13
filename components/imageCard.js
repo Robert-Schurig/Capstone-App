@@ -2,13 +2,18 @@ import {useState, useEffect} from "react";
 import Image from "next/legacy/image";
 import styled from "styled-components";
 import deleteIcon from "../public/deleteIcon.svg";
+import deleteIconFilled from "../public/deleteIconFilled.svg";
 import likeIcon from "../public/likeIcon.svg";
+import likeIconFilled from "../public/likeIconFilled.svg";
+import {useContext} from "react";
+import {ImageContext} from "./ImageContext";
 
-export default function ImageCard({addFavorite}) {
+export default function ImageCard() {
   // const {setFavorite} = useContext(ImageContext);
   const [dataArray, setDataArray] = useState([]);
   const [isLoading, setLoading] = useState(false);
-  const [displayImage, setDisplayImage] = useState(false);
+  const [displayImage, setDisplayImage] = useState(null);
+  const {addFavorite} = useContext(ImageContext);
 
   useEffect(() => {
     setLoading(true);
@@ -29,6 +34,7 @@ export default function ImageCard({addFavorite}) {
     return randomImage;
   }
 
+  console.log(displayImage);
   if (isLoading) return <p>Loading...</p>;
   if (!dataArray) return <p>No data</p>;
   return (
@@ -54,13 +60,32 @@ export default function ImageCard({addFavorite}) {
       )}
 
       <ButtonContainer>
-        <Button>
-          <Image src={deleteIcon} alt="Delete Icon" height={100} width={100} />
-        </Button>
+        <DeleteButton>
+          <Image
+            className="inactiveicon"
+            src={deleteIcon}
+            alt="Delete Icon"
+            height={100}
+            width={100}
+          />
+          <Image
+            className="activeicon"
+            src={deleteIconFilled}
+            alt="Delete Icon Filled"
+            height={100}
+            width={100}
+          />
+        </DeleteButton>
 
-        <Button onClick={() => addFavorite(displayImage)}>
+        <LikeButton onClick={() => addFavorite(displayImage)}>
           <Image src={likeIcon} alt="Like Icon" height={80} width={80} />
-        </Button>
+          <Image
+            src={likeIconFilled}
+            alt="Like Icon Filled"
+            height={80}
+            width={80}
+          />
+        </LikeButton>
       </ButtonContainer>
     </div>
   );
@@ -79,7 +104,34 @@ const ButtonContainer = styled.div`
   padding-top: 60px;
 `;
 
-const Button = styled.button`
+const DeleteButton = styled.button`
+  border: none;
+  background: none;
+
+  .activeicon {
+    display: none;
+  }
+  /*
+  :hover .inactiveicon {
+    visibility: hidden;
+  }
+  .activeicon {
+    visibility: visible;
+  } */
+`;
+
+const LikeButton = styled.button`
   border: none;
   background: none;
 `;
+
+/* .icon:nth-child(1) {
+    :hover {
+      display: none;
+    }
+  }
+  .icon:nth-child(2) {
+    :hover {
+      display: block;
+    }
+  } */

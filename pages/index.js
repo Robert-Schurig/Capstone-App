@@ -1,4 +1,4 @@
-import ImageCard from "../components/imageCard";
+import ImageCard from "../components/ImageCard";
 
 export default function Home() {
   return (

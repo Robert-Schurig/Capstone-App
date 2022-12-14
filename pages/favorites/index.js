@@ -4,7 +4,7 @@ import {ImageContext} from "../../components/ImageContext";
 
 export default function Favorites() {
   const {favorites} = useContext(ImageContext);
-  console.log(favorites);
+
   return (
     <div>
       {favorites.map(favorite => {

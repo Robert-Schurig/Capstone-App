@@ -1,19 +1,17 @@
 import {useState, useEffect} from "react";
 import Image from "next/legacy/image";
 import styled from "styled-components";
-import deleteIcon from "../public/deleteIcon.svg";
-import deleteIconFilled from "../public/deleteIconFilled.svg";
 import likeIcon from "../public/likeIcon.svg";
 import likeIconFilled from "../public/likeIconFilled.svg";
 import {useContext} from "react";
 import {ImageContext} from "./ImageContext";
 
 export default function ImageCard() {
-  // const {setFavorite} = useContext(ImageContext);
   const [dataArray, setDataArray] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [displayImage, setDisplayImage] = useState(null);
   const {addFavorite} = useContext(ImageContext);
+  const [reload, setReload] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -38,7 +36,7 @@ export default function ImageCard() {
       }
     };
     getImages();
-  }, []);
+  }, [reload]);
 
   function randomizeImage(dataArray) {
     const randomIndex = Math.round(Math.random() * dataArray.length);
@@ -46,7 +44,6 @@ export default function ImageCard() {
     return randomImage;
   }
 
-  console.log(displayImage);
   if (isLoading) return <p>Loading...</p>;
   if (!dataArray) return <p>No data</p>;
   return (
@@ -72,21 +69,18 @@ export default function ImageCard() {
       )}
 
       <ButtonContainer>
-        <DeleteButton>
-          <Image
-            className="inactiveicon"
-            src={deleteIcon}
-            alt="Delete Icon"
-            height={100}
-            width={100}
-          />
-          <Image
-            className="activeicon"
-            src={deleteIconFilled}
-            alt="Delete Icon Filled"
-            height={100}
-            width={100}
-          />
+        <DeleteButton onClick={() => setReload(!reload)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100"
+            height="100"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M12 3c-4.963 0-9 4.038-9 9s4.037 9 9 9s9-4.038 9-9s-4.037-9-9-9zm0 16c-3.859 0-7-3.14-7-7s3.141-7 7-7s7 3.14 7 7s-3.141 7-7 7zm.707-7l2.646-2.646a.502.502 0 0 0 0-.707a.502.502 0 0 0-.707 0L12 11.293L9.354 8.646a.5.5 0 0 0-.707.707L11.293 12l-2.646 2.646a.5.5 0 0 0 .707.708L12 12.707l2.646 2.646a.5.5 0 1 0 .708-.706L12.707 12z"
+            />
+          </svg>
         </DeleteButton>
 
         <LikeButton onClick={() => addFavorite(displayImage)}>
@@ -119,10 +113,6 @@ const ButtonContainer = styled.div`
 const DeleteButton = styled.button`
   border: none;
   background: none;
-
-  .activeicon {
-    display: none;
-  }
 `;
 
 const LikeButton = styled.button`

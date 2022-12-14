@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from "react";
+import {createContext, useState} from "react";
 
 const ImageContext = createContext();
 
@@ -13,7 +13,6 @@ const ImageContextProvider = props => {
       return;
     }
 
-    // if (inFavorites.length === 0 || favorites.length === 0) {
     setFavorites([...favorites, favorite]);
     // }
   };

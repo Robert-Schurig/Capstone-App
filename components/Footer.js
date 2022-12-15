@@ -20,12 +20,11 @@ export default function Footer() {
             alt="imageIcon"
             height={50}
             width={50}
-            objectFit="contain"
           />
         </Link>
       </NavElement>
 
-      <NavElement active={pathname.includes("/favorites")}>
+      <NavElement active={pathname.includes("/favoritespage")}>
         <Link href="/favorites">
           <Image
             className="image"
@@ -33,7 +32,6 @@ export default function Footer() {
             alt="Like Icon"
             height={50}
             width={50}
-            objectFit="contain"
           />
         </Link>
       </NavElement>
@@ -45,7 +43,6 @@ export default function Footer() {
             alt="Explore Icon"
             height={50}
             width={50}
-            objectFit="contain"
           />
         </Link>
       </NavElement>
@@ -57,7 +54,6 @@ export default function Footer() {
             alt="Profile Icon"
             height={50}
             width={50}
-            objectFit="contain"
           />
         </Link>
       </NavElement>

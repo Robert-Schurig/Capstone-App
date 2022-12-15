@@ -23,7 +23,7 @@ export default function ImageCard() {
           const serverData = await response.json();
           setDataArray(serverData.items);
           setLoading(false);
-          // setDisplayImage(randomizeImage(serverData.items));
+
           setReload(!reload);
         } else {
           throw new Error(
@@ -46,17 +46,11 @@ export default function ImageCard() {
     setDisplayImage(dataArray[random]);
   }, [random]);
 
-  // function randomizeImage(dataArray) {
-  //   const randomIndex = Math.floor(Math.random() * dataArray.length);
-  //   const randomImage = dataArray[randomIndex];
-  //   return randomImage;
-  // }
-
   if (isLoading) return <p>Loading...</p>;
   if (!dataArray) return <p>No data</p>;
   return (
     <div>
-      {displayImage ? (
+      {displayImage && (
         <>
           <ImageContainer>
             <Image
@@ -72,8 +66,6 @@ export default function ImageCard() {
             <p>{displayImage.dcCreator}</p>
           </Details>
         </>
-      ) : (
-        ""
       )}
 
       <ButtonContainer>

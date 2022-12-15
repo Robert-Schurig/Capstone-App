@@ -1,11 +1,8 @@
 import {useState, useEffect} from "react";
 import Image from "next/legacy/image";
 import styled from "styled-components";
-import likeIcon from "../public/likeIcon.svg";
-import likeIconFilled from "../public/likeIconFilled.svg";
 import {useContext} from "react";
 import {ImageContext} from "./ImageContext";
-import css from "styled-jsx/css";
 
 export default function ImageCard() {
   const [dataArray, setDataArray] = useState([]);
@@ -13,7 +10,6 @@ export default function ImageCard() {
   const [displayImage, setDisplayImage] = useState(null);
   const [reload, setReload] = useState(true);
   const [random, setRandom] = useState(0);
-  const [clickedButton, setClickedButton] = useState(false);
   const {addFavorite} = useContext(ImageContext);
 
   useEffect(() => {

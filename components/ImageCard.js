@@ -60,8 +60,6 @@ export default function ImageCard() {
               objectFit="contain"
               fill="true"
               layout="fill"
-              // width={500}
-              // height={300}
             />
           </ImageContainer>
           <Details>

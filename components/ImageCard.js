@@ -57,8 +57,11 @@ export default function ImageCard() {
               key={displayImage.index}
               alt={displayImage.title[0]}
               src={displayImage.edmPreview[0]}
-              width={500}
-              height={300}
+              objectFit="contain"
+              fill="true"
+              layout="fill"
+              // width={500}
+              // height={300}
             />
           </ImageContainer>
           <Details>
@@ -116,6 +119,7 @@ export default function ImageCard() {
 
 const ImageContainer = styled.div`
   display: flex;
+  position: relative;
   width: 100%;
   height: 400px;
 `;

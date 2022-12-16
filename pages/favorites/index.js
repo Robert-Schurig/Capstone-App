@@ -7,19 +7,20 @@ export default function Favorites() {
 
   return (
     <div>
-      {favorites.map(favorite => {
-        return (
-          <article key={favorite.id}>
-            <p>{favorite.title}</p>
-            <Image
-              src={favorite.edmPreview[0]}
-              alt={favorite.title}
-              height={300}
-              width={500}
-            />
-          </article>
-        );
-      })}
+      {favorites &&
+        favorites.map(favorite => {
+          return (
+            <article key={favorite.id}>
+              <p>{favorite.title}</p>
+              <Image
+                src={favorite.edmPreview[0]}
+                alt={favorite.title}
+                height={300}
+                width={500}
+              />
+            </article>
+          );
+        })}
     </div>
   );
 }

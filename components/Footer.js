@@ -24,7 +24,7 @@ export default function Footer() {
         </Link>
       </NavElement>
 
-      <NavElement active={pathname.includes("/favoritespage")}>
+      <NavElement active={pathname.includes("/favorites")}>
         <Link href="/favorites">
           <Image
             className="image"
@@ -71,6 +71,8 @@ const StyledFooter = styled.footer`
   height: 60px;
   width: 100%;
   border-top: solid 4px black;
+  background-color: white;
+  position: fixed;
   .image {
     :hover {
       filter: blur(3px);

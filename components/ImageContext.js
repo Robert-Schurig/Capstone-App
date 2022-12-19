@@ -1,9 +1,10 @@
-import {createContext, useState} from "react";
+import {createContext} from "react";
+import {useLocalStorage} from "../hooks/useLocalStorage";
 
 const ImageContext = createContext();
 
 const ImageContextProvider = props => {
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useLocalStorage("favorites", []);
 
   // add function with a proper check if the favorite to be stored is already in your state variable
   const addFavorite = favorite => {

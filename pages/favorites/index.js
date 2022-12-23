@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 export default function Favorites() {
   const {toggleFavorite, favorites} = useContext(ImageContext);
-  console.log(favorites);
 
   return (
     <>
@@ -63,8 +62,8 @@ const FavoriteContainer = styled.div`
 
   width: 100%;
   align-items: center;
-  border-radius: 25px;
-  padding-top: 36px;
+  border-radius: 2em;
+  padding-top: 4.5vh;
 `;
 
 const DeleteButton = styled.button`

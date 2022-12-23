@@ -6,20 +6,17 @@ const ImageContext = createContext();
 const ImageContextProvider = props => {
   const [favorites, setFavorites] = useLocalStorage("favorites", []);
 
-  // add function with a proper check if the favorite to be stored is already in your state variable
-  const addFavorite = favorite => {
-    const savedFavorite = favorites.find(fav => fav.id === favorite.id);
-
-    if (savedFavorite) {
-      return;
+  const toggleFavorite = favorite => {
+    if (favorites.includes(favorite)) {
+      setFavorites(favorites.filter(item => item.id !== favorite.id));
+      // If(item.id === favorite.id) {return false}
+    } else {
+      setFavorites([...favorites, favorite]);
     }
-
-    setFavorites([...favorites, favorite]);
-    // }
   };
 
   return (
-    <ImageContext.Provider value={{favorites, addFavorite}}>
+    <ImageContext.Provider value={{favorites, toggleFavorite}}>
       {props.children}
     </ImageContext.Provider>
   );

@@ -10,7 +10,9 @@ export default function ImageCard() {
   const [displayImage, setDisplayImage] = useState(null);
   const [reload, setReload] = useState(true);
   const [random, setRandom] = useState(0);
-  const {addFavorite} = useContext(ImageContext);
+  const {toggleFavorite, favorites} = useContext(ImageContext);
+
+  console.log(favorites);
 
   useEffect(() => {
     setLoading(true);
@@ -90,7 +92,7 @@ export default function ImageCard() {
 
         <LikeButton
           onClick={() => {
-            addFavorite(displayImage);
+            toggleFavorite(displayImage);
             setReload(!reload);
           }}
         >

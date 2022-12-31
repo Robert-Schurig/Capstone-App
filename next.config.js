@@ -3,13 +3,14 @@ const nextConfig = {
   reactStrictMode: true,
   compiler: {
     styledComponents: true,
+    reactRemoveProperties: true,
   },
   eslint: {
     dirs: ["pages", "components", "styles"],
   },
-  reactStrictMode: true,
+  // reactStrictMode: true,
   swcMinify: true,
-  compiler: {reactRemoveProperties: true, styledComponents: true},
+  // compiler: {reactRemoveProperties: true, styledComponents: true},
   images: {
     domains: ["api.europeana.eu"],
   },

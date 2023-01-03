@@ -1,14 +1,16 @@
 import GlobalStyles from "../styles/GlobalStyles";
-import Footer from "../components/Footer";
+
 import {ImageContextProvider} from "../components/ImageContext";
+import Layout from "../components/Layout";
 
 function MyApp({Component, pageProps}) {
   return (
     <>
       <GlobalStyles />
       <ImageContextProvider>
-        <Component {...pageProps} />
-        <Footer />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ImageContextProvider>
     </>
   );

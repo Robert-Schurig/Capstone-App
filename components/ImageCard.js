@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import Image from "next/legacy/image";
 import styled from "styled-components";
 import {useContext} from "react";
 import {ImageContext} from "./ImageContext";
@@ -51,19 +50,18 @@ export default function ImageCard() {
   if (isLoading) return <p>Loading...</p>;
   if (!dataArray) return <p>No data</p>;
   return (
-    <div>
+    <>
       {displayImage && (
         <>
-          <ImageContainer>
-            <Image
-              key={displayImage.index}
-              alt={displayImage.title[0]}
-              src={displayImage.edmPreview[0]}
-              objectFit="contain"
-              fill="true"
-              layout="fill"
-            />
-          </ImageContainer>
+          <CurrentImage
+            key={displayImage.index}
+            alt={displayImage.title[0]}
+            src={displayImage.edmPreview[0]}
+            objectFit="contain"
+            fill="true"
+            layout="fill"
+          />
+
           <Details>
             <p>{displayImage.title[0]}</p>
             <p>{displayImage.dcCreator}</p>
@@ -84,7 +82,7 @@ export default function ImageCard() {
             viewBox="0 0 24 24"
           >
             <path
-              fill="currentColor"
+              fill="black"
               d="M12 3c-4.963 0-9 4.038-9 9s4.037 9 9 9s9-4.038 9-9s-4.037-9-9-9zm0 16c-3.859 0-7-3.14-7-7s3.141-7 7-7s7 3.14 7 7s-3.141 7-7 7zm.707-7l2.646-2.646a.502.502 0 0 0 0-.707a.502.502 0 0 0-.707 0L12 11.293L9.354 8.646a.5.5 0 0 0-.707.707L11.293 12l-2.646 2.646a.5.5 0 0 0 .707.708L12 12.707l2.646 2.646a.5.5 0 1 0 .708-.706L12.707 12z"
             />
           </svg>
@@ -104,7 +102,7 @@ export default function ImageCard() {
           >
             <path
               fill="none"
-              stroke="currentColor"
+              stroke="black"
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="4"
@@ -113,27 +111,32 @@ export default function ImageCard() {
           </svg>
         </LikeButton>
       </ButtonContainer>
-    </div>
+    </>
   );
 }
 
-const ImageContainer = styled.div`
+const CurrentImage = styled.img`
   display: flex;
   position: relative;
-  width: 100%;
-  height: 400px;
+  margin: 2vh auto;
+  width: 90%;
+  min-height: 25rem;
+  box-shadow: 6px 6px 18px #8a8a22, -6px -6px 18px #ffff5c;
+  border-radius: 8px;
 `;
 
-const Details = styled.div`
-  display: block;
-  height: 110px;
+const Details = styled.article`
+  margin: 0 4%;
+  font-family: "AnotherTypewriter";
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
-  flex-direction: row;
-  padding-top: 60px;
+
+  width: 100%;
+  position: fixed;
+  bottom: 4rem;
 `;
 
 const ReloadButton = styled.button`
@@ -148,7 +151,7 @@ const ReloadButton = styled.button`
     transform: scale(0.8);
     transition: 0.5s;
     path {
-      fill: darkviolet;
+      fill: var(--color7);
       transition: 0.5s;
     }
   }
@@ -157,6 +160,7 @@ const ReloadButton = styled.button`
 const LikeButton = styled.button`
   border: none;
   background: none;
+
   path {
     transition: 0.5s;
   }
@@ -165,7 +169,7 @@ const LikeButton = styled.button`
     transform: scale(0.8);
     transition: 0.5s;
     path {
-      stroke: darkviolet;
+      stroke: var(--color7);
       transition: 0.5s;
     }
   }

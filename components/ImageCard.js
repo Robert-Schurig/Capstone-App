@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+
 import styled from "styled-components";
 import {useContext} from "react";
 import {ImageContext} from "./ImageContext";
@@ -120,7 +121,8 @@ const CurrentImage = styled.img`
   position: relative;
   margin: 2vh auto;
   width: 90%;
-  min-height: 25rem;
+  min-height: 30vh;
+  max-height: 47vh;
   box-shadow: 2px 2px 8px black;
   border-radius: 8px;
 `;

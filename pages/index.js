@@ -1,9 +1,9 @@
-import ImageCard from "../components/ImageCard";
+import Login from "../components/Login";
 
 export default function Home() {
   return (
     <>
-      <ImageCard />
+      <Login />
     </>
   );
 }

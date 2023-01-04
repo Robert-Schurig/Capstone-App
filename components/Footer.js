@@ -2,10 +2,10 @@ import styled from "styled-components";
 import Image from "next/image";
 import {useRouter} from "next/router";
 import Link from "next/link";
-import exploreIcon from "../public/exploreIcon.svg";
-import imageIcon from "../public/imageIcon.svg";
-import likeIcon from "../public/likeIcon.svg";
-import profileIcon from "../public/profileIcon.svg";
+import exploreIcon from "../public/icons/exploreIcon.svg";
+import imageIcon from "../public/icons/imageIcon.svg";
+import likeIcon from "../public/icons/likeIcon.svg";
+import profileIcon from "../public/icons/profileIcon.svg";
 
 export default function Footer() {
   const {pathname} = useRouter();
@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <StyledFooter>
       <NavElement active={pathname === "/"}>
-        <Link href="/">
+        <Link href="/images">
           <Image
             className="image"
             src={imageIcon}
@@ -71,7 +71,7 @@ const StyledFooter = styled.footer`
   height: 60px;
   width: 100%;
   border-top: solid 4px black;
-  background-color: white;
+  background-color: var(--color4);
   position: fixed;
   .image {
     :hover {

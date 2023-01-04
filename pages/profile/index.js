@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export default function Profile() {
   return (
-    <>
+    <ProfileContainer>
       <p>Benutzername: </p>
       <p>Name: </p>
       <p>E-Mail: </p>
@@ -38,9 +38,14 @@ export default function Profile() {
           <label htmlFor="20thcentury">20. Jahrhundert</label>
         </li>
       </EpochList>
-    </>
+    </ProfileContainer>
   );
 }
+
+const ProfileContainer = styled.div`
+  height: 100%;
+  margin: 20vh 0 0 5vw;
+`;
 
 const EpochList = styled.ul`
   list-style: none;

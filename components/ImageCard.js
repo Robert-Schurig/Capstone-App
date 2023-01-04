@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import Image from "next/image";
+
 import styled from "styled-components";
 import {useContext} from "react";
 import {ImageContext} from "./ImageContext";
@@ -54,7 +54,6 @@ export default function ImageCard() {
     <>
       {displayImage && (
         <>
-          {/* <ImageContainer> */}
           <CurrentImage
             key={displayImage.index}
             alt={displayImage.title[0]}
@@ -63,7 +62,7 @@ export default function ImageCard() {
             fill="true"
             layout="fill"
           />
-          {/* </ImageContainer> */}
+
           <Details>
             <p>{displayImage.title[0]}</p>
             <p>{displayImage.dcCreator}</p>
@@ -127,16 +126,6 @@ const CurrentImage = styled.img`
   box-shadow: 2px 2px 8px black;
   border-radius: 8px;
 `;
-
-// const ImageContainer = styled.div`
-//   display: flex;
-//   position: relative;
-//   margin: 2vh auto;
-//   width: 90%;
-//   min-height: 20rem;
-//   box-shadow: 2px 2px 8px black;
-//   border-radius: 8px;
-// `;
 
 const Details = styled.article`
   margin: 0 4%;

@@ -121,7 +121,7 @@ const CurrentImage = styled.img`
   margin: 2vh auto;
   width: 90%;
   min-height: 25rem;
-  box-shadow: 6px 6px 18px #8a8a22, -6px -6px 18px #ffff5c;
+  box-shadow: 2px 2px 8px black;
   border-radius: 8px;
 `;
 

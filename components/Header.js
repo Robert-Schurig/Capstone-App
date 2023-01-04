@@ -8,7 +8,7 @@ export default function Header() {
         styling="border-radius: 0;
       font-size: 2rem;
       background: none;
-      padding: 0 0 0 0.3rem ;
+      padding: 0.2rem 0 0 0.3rem ;
       justify-content: start;
       "
         headerstyle="margin: 0.3rem;

@@ -30,3 +30,24 @@ Bootcamp.
 - Figma
 - Git
 - Vercel
+
+---
+
+## How to set it up
+
+- clone this repository
+- install all npm dependencies  
+   `npm install`
+- to run the app in development mode `npm start`, then open [http://localhost:3000](http://localhost:3000) to view it in the browser
+- to run Storybook  
+  `npm run storybook`
+- to run React Testing Library & Jest  
+  `npm test`
+- to run Cypress  
+  `npm run cypress`
+- to create a build ready for deploying:
+  `npm run build`
+- this app uses firebase authentication, storage and firestore, therefore you need to install firebase  
+  `npm install -g firebase-tools`  
+  and intialize it to use and deploy the firebase project.
+- for more information check out the [firebase documentation](https://firebase.google.com/docs)
